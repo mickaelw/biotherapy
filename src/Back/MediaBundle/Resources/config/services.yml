@@ -1,0 +1,7 @@
+parameters:
+#    back_media.example.class: Back\MediaBundle\Example
+
+services:
+#    back_media.example:
+#        class: %back_media.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,65 @@
+{% extends "FrontWebsiteBundle::layout.html.twig" %}
+
+{% block title %}{{ parent () }} - {{card.name}}{% endblock %}
+{% block css %}
+	<link rel="stylesheet" href="{{asset('misc/css/card.less')}}" type="text/less" />
+{% endblock %}
+
+{% block maintype %}
+	<ul>
+		<li id="orange" data-title="{{card.name}} - Fiche patient" class="selected">Patient</li>
+		<li id="red" data-title="{{card.name}} - Fiche médecin (résumé)">Méd. (résumé)</li>
+		<li id="purple" data-title="{{card.name}} - Fiche médecin (détaillée)">Méd. (détaillée)</li>
+		<li id="green" data-title="{{card.name}} - Édition">Édition</li>
+		{% if card.textRef|raw is not empty %}<li id="blue" data-title="{{card.name}} - Références">Références</li>{% endif %}
+	</ul>
+	<div class="line orange"></div>
+{% endblock %}
+
+{% block content %}
+	<article data-card-id="{{card.id}}">
+		<h2>{{card.name}} - Fiche patient</h2>
+		<span class="card-favorite {% if card.id in favorite %}selected{% endif %}" data-ajax="{{path('front_website_ajax', {'param':'favorite'})}}"></span>
+		<div class="clear"></div>
+		<div class="line"></div>
+		<div class="card-content orange selected">{{card.textPatient|raw}}</div>
+		<div class="card-content red">{{card.textMDShort|raw}}</div>
+		<div class="card-content purple">{{card.textMDShort|raw}} {{card.textMDFull|raw}}</div>
+		{% if card.textRef|raw is not empty %}<div class="card-content blue">{{card.textRef|raw}}</div>{% endif %}
+		<div class="card-content green">
+			{% block admincard %}
+				{{edition.text|raw}}
+	
+				{% for key, message in app.session.flashbag.all() %}
+					<div class="alert alert-{{ key }}">{{ message|trans({}, 'FOSUserBundle') }}</div>
+				{% endfor %}
+				
+				<form action="{{ path('front_website_card_admin', {'id':card.id,'slug':card.name|url_format,'format':'html'}) }}" method="post" id="login">
+					<input type="text" name="_username" placeholder="Login" class="input" />
+					<input type="password" name="_password" placeholder="Mot de passe" class="input" />
+					<a href="">Mot de passe perdu ?</a>
+					<input type="hidden" name="action" value="login" />
+					<input type="submit" value="OK" id="login-front" />
+				</form>
+			{% endblock %}
+		</div>
+	</article>
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{{asset('misc/js/card.js')}}"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('select[name="search-biotherapy"]').val({{card.biotherapy.id}});
+			loadSC($('select[name="search-biotherapy"]'),false, function(){
+				$('select[name="search-clinicalSituation"]').val({{card.clinicalSituation.id}});
+				{% if card.clinicalSituation2 is not null %}
+					loadSC($('select[name="search-clinicalSituation"]'),false, function(){
+						$('select[name="search-clinicalSituation2"]').val({{card.clinicalSituation2.id}});
+					});
+				{% endif %}
+			});
+		});
+	</script>
+	{% block jsplus %}{% endblock %}
+{% endblock %}

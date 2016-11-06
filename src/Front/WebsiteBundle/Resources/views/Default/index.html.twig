@@ -1,0 +1,15 @@
+{% extends "FrontWebsiteBundle::layout.html.twig" %}
+
+{% block title %}{{ parent () }} - Index{% endblock %}
+{% block css %}{% endblock %}
+
+{% block maintype %}{% endblock %}
+
+{% block content %}
+	<h2>Accueil</h2>
+	<div class="clear"></div>
+	<div class="line"></div>
+	<div id="main-content">{{home.text|raw}}</div>
+{% endblock %}
+
+{% block js %}{% endblock %}

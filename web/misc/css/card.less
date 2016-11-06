@@ -1,0 +1,62 @@
+@sprite: transparent url("../img/sprite.png") no-repeat;
+
+#main{
+	#main-type{visibility: visible!important;}
+	#main-center{
+		h2{float: left;}
+		.card-favorite{
+			background: @sprite;
+			background-position: -27px -28px;
+			display: inline-block;
+			float: right;
+			width: 20px;
+			height: 18px;
+			cursor: pointer;
+			margin-top: 5px;
+			&:hover,&.selected{background-position: -5px -28px;}
+		}
+		.card-download{
+			background: @sprite;
+			background-position: -51px -28px;
+			display: inline-block;
+			margin-right: 5px;
+			float: right;
+			width: 16px;
+			height: 18px;
+			cursor: pointer;
+			margin-top: 5px;
+			&:hover{background-position: -5px -98px;}
+		}
+		.card-content{
+			position: relative;
+			height: 570px;
+			overflow: auto;
+			form#login{
+				width: 395px;
+				margin: 60px auto;
+				input{
+					display: block;
+					margin-bottom: 25px;
+				}
+				input[type="submit"]{
+					background: @sprite;
+					background-position: -44px -49px;
+					border: none;
+					height: 35px;
+					width: 35px;
+					margin: 0px;
+					cursor: pointer;
+					float: right;
+					color: white;
+					font-size: 17px;
+					font-style: italic;
+					font-weight: bold;
+					text-indent: -4px;
+					line-height: 36px;
+					font-family: Gotham, Verdana, sans-serif;
+				}
+			}
+			p{margin-bottom: 10px;}
+		}
+	}
+}

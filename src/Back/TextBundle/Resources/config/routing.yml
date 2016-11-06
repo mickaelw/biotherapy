@@ -1,0 +1,7 @@
+back_text_homepage:
+    pattern: /
+    defaults: { _controller: BackTextBundle:Default:index }
+
+back_text_update:
+    pattern: /modifier/{id}
+    defaults: { _controller: BackTextBundle:Default:update }

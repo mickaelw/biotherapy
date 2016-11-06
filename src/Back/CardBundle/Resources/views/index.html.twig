@@ -1,0 +1,42 @@
+{% extends "BackWebsiteBundle::layout.html.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}
+	
+	{% include 'BackWebsiteBundle:Default:menu.html.twig' %}
+	
+	<section id="admin">
+		<h1>Gestion des fiches</h1>
+		<div id="section-content">
+			{% for key, flashes in app.session.flashbag.all %}
+				{% for flash in flashes %}
+				    <p class="{{ key }}">{{ flash }}</p>
+				{% endfor %}
+			{% endfor %}
+			<table class="list-obj">
+				<thead>
+					<th>Nom</th>
+					<th>Biothérapie</th>
+					<th>Actions</th>
+				</thead>
+				<tbody>
+				{% for item in list %}
+					<tr>
+						<td>{{item.name}}</td>
+						<td>{{item.biotherapy.name}}</td>
+						<td>
+							<a href="{{path('back_card_update', {'id':item.id})}}"><img src="{{asset('misc/img/admin/application_edit.png')}}" height="16px" with="16px" /></a>
+							<a data-ref="{{path('back_card_delete', {'id':item.id})}}" href="javascript:;" rel="#overlay-delete" class="item-delete"><img src="{{asset('misc/img/admin/delete.png')}}" height="16px" with="16px" /></a>
+						</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

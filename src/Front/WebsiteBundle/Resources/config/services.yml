@@ -1,0 +1,8 @@
+parameters:
+#    front_website.example.class: Front\WebsiteBundle\Example
+
+services:
+    front.twig.string_extension:
+        class: Front\WebsiteBundle\Twig\StringExtension
+        tags: 
+            - { name: twig.extension}

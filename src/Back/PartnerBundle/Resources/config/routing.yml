@@ -1,0 +1,15 @@
+back_partner_homepage:
+    pattern:     /
+    defaults: { _controller: BackPartnerBundle:Default:index }
+
+back_partner_add:
+    pattern: /ajouter/
+    defaults: { _controller: BackPartnerBundle:Default:add }
+
+back_partner_update:
+    pattern: /modifier/{id}
+    defaults: { _controller: BackPartnerBundle:Default:update }
+
+back_partner_delete:
+    pattern: /supprimer/{id}
+    defaults: { _controller: BackPartnerBundle:Default:delete }

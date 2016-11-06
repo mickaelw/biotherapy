@@ -1,0 +1,15 @@
+back_card_homepage:
+    pattern:     /
+    defaults: { _controller: BackCardBundle:Default:index }
+
+back_card_add:
+    pattern: /ajouter/
+    defaults: { _controller: BackCardBundle:Default:add }
+
+back_card_update:
+    pattern: /modifier/{id}
+    defaults: { _controller: BackCardBundle:Default:update }
+
+back_card_delete:
+    pattern: /supprimer/{id}
+    defaults: { _controller: BackCardBundle:Default:delete }

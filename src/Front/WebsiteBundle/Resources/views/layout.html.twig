@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>{% block title %}Biotherapies.fr{% endblock %}</title>
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		<meta name="description" content="" />
+	  	<meta name="keywords" content="" />
+		<meta name="robots" content="" />
+		<link rel="stylesheet" href="{{asset('misc/css/reset.less')}}" type="text/less" />
+		<link rel="stylesheet" href="{{asset('misc/css/bootstrap.less')}}" type="text/less" />
+		<link rel="stylesheet" href="{{asset('misc/css/default.less')}}" type="text/less" />
+		<link rel="stylesheet" href="{{asset('misc/css/search.less')}}" type="text/less" />
+		<link rel="stylesheet" href="{{asset('misc/css/media-queries.less')}}" type="text/less" />
+		{% block css %}{% endblock %}
+	</head>
+	<body>
+		<header>
+			<div class="middle">
+				<h1><a href="{{path('front_website_homepage')}}">Biotherapies.fr</a></h1>
+				<nav>
+					<ul>
+						<li><a href="{{path('front_website_homepage')}}">Accueil</a></li>
+						<li><a href="#a_propos_de">A propos de</a></li>
+						<li><a href="#partenaires">Partenaires</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		
+		<div id="main" class="middle">
+			{% include "FrontWebsiteBundle:Form:form.html.twig" %}
+			
+			<div id="main-type">{% block maintype %}{% endblock %}</div>
+			
+			<div id="main-center">
+				<div id="main-hole">
+					{% for i in 1..8 %}
+					    <img src="{{asset('misc/img/hole.png')}}" height="27px" with="27px" />
+					{% endfor %}
+				</div>
+				<div id="main-ajax">{% block content %}{% endblock %}</div>
+			</div>
+		</div>
+		<div id="main-bottom"></div>
+		
+		<div class="middle" id="a_propos_de">
+			<h2>{{about.name|raw}}</h2>
+			<div class="clear"></div>
+			<div id="about-content">{{about.text|raw}}</div>
+		</div>
+		
+		<div class="middle" id="partenaires">
+			<h2>Partenaires</h2>
+			<div class="clear"></div>
+			<div id="partner-content">
+				{% for partner in listPart %}
+				<figure>
+					<a href="{{partner.url}}" target="_blank" ><img src="{{asset(partner.media.url)}}" with="200px" height="104px" alt="{{partner.media.name}}" title="{{partner.media.name|title}}" /></a>
+					<img src="{{asset('misc/img/partner-shadow.png')}}" with="200px" height="25px" alt="shadow" />
+				</figure>
+				{% endfor %}
+			</div>
+		</div>
+		
+		<div class="clear"></div>
+		
+        <footer>
+        	<div class="middle" id="contact">
+        		<h2>Contact</h2>
+        		<div class="clear"></div>
+        		<form method="post" action"">
+        			<input type="text" name="name" placeholder="Prénom et nom" class="input" />
+        			<input type="text" name="email" placeholder="Email" class="input" />
+        			<textarea class="textarea" placeholder="Message"></textarea>
+        			<input type="submit" value="" />
+        		</form>
+        		<aside>
+        			<div id="footer-misc">{{contact.text|raw}}</div>
+    				<!--<div id="app">
+	    				<p>L’application est disponible sur :</p>
+	    				<a href="javascript:;"><img id="apple" src="{{asset('misc/img/logo-appstore.png')}}" height="60px" width="170px" alt="appstore" title="appstore" /></a>
+	    				<a href="javascript:;"><img id="android" src="{{asset('misc/img/logo-androidmarket.png')}}" height="60px" width="170px" alt="appstore" title="appstore" /></a>
+    				</div>-->
+        		</aside>
+        	</div>
+        	<div id="copyright"><p class="middle">Copyright © 2015 - Tous droits réservés</p></div>
+        </footer>
+        
+        <!-- Overlay -->
+	   	<div class="overlay" id="overlay-pdf">
+	   		{% block overlayTxt %}<p>Télécharger les résultats de la recherche</p>{% endblock %}
+			<a class="btn pdf-vPat" href="javascript:;" target="_blank">Version patient</a>
+			<a class="btn pdf-vMed" href="javascript:;" target="_blank">Version médecin</a>
+	   	</div>
+        
+        <script type="text/javascript" src="{{asset('misc/js/jquery.js')}}"></script>
+        <script type="text/javascript" src="{{asset('misc/js/jquery.ui.js')}}"></script>
+        <script type="text/javascript" src="{{asset('misc/js/jquery.tools.js')}}"></script>
+        <script type="text/javascript" src="{{asset('misc/js/jquery.cookie.js')}}"></script>
+        <script type="text/javascript" src="{{asset('misc/js/jquery.juizScrollTo.js')}}"></script>
+        <script type="text/javascript" src="{{asset('misc/js/jquery.autocomplete.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('misc/js/jquery.dotdotdot.min.js')}}"></script>
+		<script type="text/javascript" src="{{asset('misc/js/less.js')}}"></script>
+		<script type="text/javascript">less.watch();</script>
+		<script type="text/javascript" src="{{asset('misc/js/general.js')}}"></script>
+		<script type="text/javascript">var biotherapies = {{listKeyWords|raw}};</script>
+        {% block js %}{% endblock %}
+	</body>
+</html>

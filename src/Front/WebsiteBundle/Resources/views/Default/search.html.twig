@@ -1,0 +1,27 @@
+{% if list is not empty %}
+	<span id="search-icon-download" rel="#overlay-pdf" data-url="{{path('front_website_pdf')}}" title="Télécharger les résultats de la recherche"></span>
+	
+	<div id="search-postit-download">
+		<p>Télécharger les résultats de la recherche</p>
+		<a class="btn pdf-vPat" href="javascript:;" target="_blank">Version patient</a>
+		<a class="btn pdf-vMed" href="javascript:;" target="_blank">Version médecin</a>
+	</div>
+{% endif %}
+<p id="search-nb-result">{% if list is not empty %}{{list|length}} fiche{% if list|length > 1 %}s{% endif %} trouvée{% if list|length > 1 %}s{% endif %}{% endif %}</p>
+<div class="clear"></div>
+<div class="line"></div>
+<div id="search-content">
+	{% if list is empty %}
+		<p>Aucune fiche n'a été trouvée.</p>
+	{% else %}
+		{% for card in list %}
+		    <article data-card-id="{{card.id}}">
+		    	<h2><a href="{{path('front_website_card', {'id':card.id,'slug':card.name|url_format,'format':'html'})}}">{{card.name}}</a></h2>
+		    	<span class="search-card-favorite {% if card.id in favorite %}selected{% endif %}" data-ajax="{{path('front_website_ajax', {'param':'favorite'})}}" title="{% if card.id in favorite %}Retirer à vos favoris{% else %}Ajouter à vos favoris{% endif %}"></span>
+		    	<div class="clear"></div>
+		    	<p class="search-card-infos">Biothérapie : {{card.biotherapy.name}}</p>
+		    	<div class="search-card-text">{{card.textMDShort|striptags|raw}}</div>
+		    </article>
+		{% endfor %}
+	{% endif %}
+</div>

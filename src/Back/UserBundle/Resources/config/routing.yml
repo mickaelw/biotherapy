@@ -1,0 +1,15 @@
+back_user_homepage:
+    pattern:     /
+    defaults: { _controller: BackUserBundle:Default:index }
+
+back_user_add:
+    pattern: /ajouter/
+    defaults: { _controller: BackUserBundle:Default:add }
+
+back_user_update:
+    pattern: /modifier/{id}
+    defaults: { _controller: BackUserBundle:Default:update }
+
+back_user_delete:
+    pattern: /supprimer/{id}
+    defaults: { _controller: BackUserBundle:Default:delete }

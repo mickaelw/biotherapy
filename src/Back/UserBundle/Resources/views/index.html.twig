@@ -1,0 +1,49 @@
+{% extends "BackWebsiteBundle::layout.html.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}
+	
+	<section id="user">
+		<h1>Gestion des utilisateurs</h1>
+		<div id="section-content">
+			{% for key, flashes in app.session.flashbag.all %}
+				{% for flash in flashes %}
+				    <p class="{{ key }}">{{ flash }}</p>
+				{% endfor %}
+			{% endfor %}
+			
+			{% if list is empty %}
+				<p>Aucun utilisateur trouvé.</p>
+			{% else %}
+				<a class="btn success left" href="{{path('back_user_add')}}">Ajouter un utilisateur</a>
+				<br />
+				<br />
+				<table class="list-obj">
+					<thead>
+						<th>Login</th>
+						<th>Rôle</th>
+						<th>Action</th>
+					</thead>
+					<tbody>
+					{% for item in list %}
+						<tr>
+							<td>{{item.username}}</td>
+							<td>{{item.roles|join(', ')}}</td>
+							<td>
+								<a href="{{path('back_user_update', {'id':item.id})}}"><img src="{{asset('misc/img/admin/application_edit.png')}}" height="16px" with="16px" /></a>
+								<a data-ref="{{path('back_user_delete', {'id':item.id})}}" href="javascript:;" rel="#overlay-delete" class="item-delete"><img src="{{asset('misc/img/admin/delete.png')}}" height="16px" with="16px" /></a>
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			{% endif %}
+			
+		</div>
+	</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

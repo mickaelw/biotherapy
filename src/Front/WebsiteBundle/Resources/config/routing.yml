@@ -1,0 +1,42 @@
+front_website_homepage:
+    pattern:  /
+    defaults: { _controller: FrontWebsiteBundle:Default:index }
+
+front_website_ajax:
+    pattern: /ajax/recherche/{param}
+    defaults: { _controller: FrontWebsiteBundle:Default:ajax }
+
+front_website_dowload:
+    pattern:  /telechargment/{id}-{slug}.{format}
+    defaults: { _controller: FrontWebsiteBundle:Default:download }
+
+front_website_card:
+    pattern:  /fiche/{id}-{slug}.{format}
+    defaults: { _controller: FrontWebsiteBundle:Default:card }
+    requirements:
+        format: html
+
+front_website_card_admin:
+    pattern:  /fiche/modifier/{id}-{slug}.{format}
+    defaults: { _controller: BackCardBundle:Default:mini }
+    requirements:
+        format: html
+
+front_website_card_admin_update:
+    pattern:  /fiche/update/{id}
+    defaults: { _controller: BackCardBundle:Default:miniUpdate }
+    requirements:
+        format: html
+        
+front_website_card_logout:
+    path:  /fiche/logout
+    defaults: { _controller: FrontWebsiteBundle:Default:card }
+    requirements:
+        format: html
+        
+front_website_pdf:
+    path: /pdf/
+
+front_website_pdf_config:
+    path: /pdf/{version}/{BioID}-{CS1ID}
+    defaults: {_controller: FrontWebsiteBundle:Pdf:index}

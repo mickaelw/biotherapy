@@ -1,0 +1,40 @@
+{% extends "BackWebsiteBundle::layout.html.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}
+
+	{% include 'BackWebsiteBundle:Default:menu.html.twig' %}
+	
+	<section id="admin">
+		<h1>Modification du texte : {{obj.name}}</h1>
+		<div id="section-content">
+			{{ form_errors(form) }}
+			<form method="post" action="{{ path('back_text_update', {'id':obj.id}) }}" {{ form_enctype(form) }}>
+			<table class="table-form">
+				<tr>
+					<th>Nom</th>
+					<td>{{obj.name}}</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						{{ form_errors(form.text) }}
+						{{ form_widget(form.text) }}
+					</td>
+				</tr>
+				<tr>
+					<th>{{ form_rest(form) }}</th>
+					<td>
+						<input type="submit" class="btn success left" />
+						<a class="btn cancel right" href="{{path('back_text_homepage')}}">Annuler</a>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

@@ -1,0 +1,28 @@
+<div id="main-search">
+	<form method="post" action="#">
+		<div class="{% if ua.platform == 'Macintosh' %}selectMac{% else %}select{% endif %}">
+			<select name="search-biotherapy" data-ajax="{{path('front_website_ajax', {'param':'select'})}}" >
+				<option value=" " selected="selected">Biothérapies</option>
+				<option value="0">---</option>
+				{% for bio in listBio %}
+					<option value="{{bio.id}}">{{bio.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div id="selectCS">
+			<div class="{% if ua.platform == 'Macintosh' %}selectMac{% else %}select{% endif %}">
+				<select name="search-clinicalSituation" data-ajax="{{path('front_website_ajax', {'param':'select'})}}" >
+					<option value=" " selected="selected">Situations cliniques</option>
+					<option value="0">---</option>
+					{% for cs in listCS %}
+						<option value="{{cs.id}}">{{cs.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		<button id="search-refresh" data-ajax="{{path('front_website_ajax', {'param':'search'})}}" ></button>
+		<input type="text" name="search-word" id="autocomplete" />
+		<button id="search-ajax" data-ajax="{{path('front_website_ajax', {'param':'search'})}}" ></button>
+	</form>
+</div>
+<div class="clear"></div>

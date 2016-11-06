@@ -1,0 +1,42 @@
+{% extends "BackWebsiteBundle::layout.html.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}
+
+	{% include 'BackWebsiteBundle:Default:menu.html.twig' %}
+	
+	<section id="admin">
+		<h1>Modification d'un utilisateur</h1>
+		<div id="section-content">
+			{{ form_errors(form) }}
+			<form method="post" action="{{ path('back_user_update', {'id':obj.id}) }}" {{ form_enctype(form) }}>
+			<table class="table-form">
+				<tr>
+					<th>{{ form_label(form.username, "Login") }}</th>
+					<td>{{ form_errors(form.username) }}{{ form_widget(form.username) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.email, "Email") }}</th>
+					<td>{{ form_errors(form.email) }}{{ form_widget(form.email) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.plainPassword, "Mot de passe") }}</th>
+					<td>{{ form_errors(form.plainPassword) }}{{ form_widget(form.plainPassword) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_rest(form) }}</th>
+					<td>
+						<input type="submit" class="btn success left" />
+						<a class="btn cancel right" href="{{path('back_user_homepage')}}">Annuler</a>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

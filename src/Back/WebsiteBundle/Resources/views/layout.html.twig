@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Biothérapie - Administration</title>
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		<meta name="description" content="" />
+	  	<meta name="keywords" content="" />
+		<meta name="robots" content="" />
+		<link rel="stylesheet" href="{{asset('misc/css/admin/reset.less')}}" type="text/less" />
+		<link rel="stylesheet" href="{{asset('misc/css/admin/bootstrap.less')}}" type="text/less" />
+		<link rel="stylesheet" href="{{asset('misc/css/admin/default.less')}}" type="text/less" />
+		<link rel="stylesheet" href="{{asset('misc/css/admin/jquery.datatables.less')}}" type="text/less" />
+		{% block css %}{% endblock %}
+	</head>
+	<body>
+		<div id="body">
+	    	<header>
+	        	<a href="{{path('fos_user_security_check')}}">Administration</a>
+	            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	            	<nav>
+	            		<ul>
+	            			<li><a id="nav-contenu" href="{{path('fos_user_security_check')}}"></a></li>
+	            			<li><a id="nav-user" href="{{path('back_user_homepage')}}"></a></li>
+	            		</ul>
+	            	</nav>
+	            {% endif %}
+	        </header>
+	        
+	        <p id="login">
+	        	<a href="{{path('front_website_homepage')}}" target="_new">Site Internet</a>
+	        	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	        		| Connecté en tant que {{ app.user.username }} - <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+	        	{% endif %}
+	        </p>
+	        
+	        <div class="clear"></div>
+	        
+	        <div id="main">
+				{% block content %}{% endblock %}
+			</div>
+	        
+	        <div class="clear"></div>
+	        
+	        <footer><p>Copyright &copy; 2014 Tous droits réservés.</p></footer>
+	   	</div>
+	   	
+	   	<!-- Overlay -->
+	   	<div class="overlay" id="overlay-delete">
+	   		<h2>Confirmation</h2>
+	
+	   		<p>Etes-vous sur de vouloir supprimer cet item ?</p>
+	
+			<a class="close btn cancel" href="javascript:;">Non</a>
+			<a class="btn success" href="submit">Oui</a>
+	   		</form>
+	   	</div>
+        
+        <script type="text/javascript" src="{{asset('misc/js/jquery.js')}}"></script>
+        <script type="text/javascript" src="{{asset('misc/js/tinymce/tinymce.min.js')}}"></script>
+		<script type="text/javascript" src="{{asset('misc/js/jquery.datatables.js')}}"></script>
+		<script type="text/javascript" src="{{asset('misc/js/jquery.tools.js')}}"></script>
+		<script type="text/javascript" src="{{asset('misc/js/less.js')}}"></script>
+		<script type="text/javascript">less.watch();</script>
+		<script type="text/javascript" src="{{asset('misc/js/admin/general.js')}}"></script>
+        {% block js %}{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,7 @@
+parameters:
+#    back_biotherapy.example.class: Back\BiotherapyBundle\Example
+
+services:
+#    back_biotherapy.example:
+#        class: %back_biotherapy.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

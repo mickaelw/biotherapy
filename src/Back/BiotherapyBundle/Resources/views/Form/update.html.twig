@@ -1,0 +1,43 @@
+{% extends "BackWebsiteBundle::layout.html.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}
+
+	{% include 'BackWebsiteBundle:Default:menu.html.twig' %}
+	
+	<section id="admin">
+		<h1>Modification d'une biothérapie : {{obj.name}}</h1>
+		<div id="section-content">
+			{{ form_errors(form) }}
+			<form method="post" action="{{ path('back_biotherapy_update', {'id':obj.id}) }}" {{ form_enctype(form) }}>
+			<table class="table-form">
+				<tr>
+					<th>{{ form_label(form.name, "Nom") }}</th>
+					<td>{{ form_errors(form.name) }}{{ form_widget(form.name) }}</td>
+				</tr>
+				<tr>
+					<th>Situations cliniques</th>
+					<td>
+						<div class="actions">
+							<span data-action="checkall">Tous séletionner</span> - <span data-action="uncheckall">Tous déselectionner</span>
+						</div>
+						{{ form_widget(form.clinicalSituations) }}
+					</td>
+				</tr>
+				<tr>
+					<th>{{ form_rest(form) }}</th>
+					<td>
+						<input type="submit" class="btn success left" />
+						<a class="btn cancel right" href="{{path('back_biotherapy_homepage')}}">Annuler</a>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

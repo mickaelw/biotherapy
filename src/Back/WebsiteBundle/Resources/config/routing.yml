@@ -1,0 +1,68 @@
+back_website_homepage:
+    pattern:  /
+    defaults:  { _controller: BackUserBundle:Security:login }
+
+################
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /
+
+fos_user_security_login:
+    pattern:  /login
+    defaults:  { _controller: BackUserBundle:Security:login}
+
+fos_user_security_check:
+    pattern:  /login/
+    defaults:  { _controller: BackWebsiteBundle:Default:index }
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /login/profile
+    
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+    
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+    
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+fos_user_security_logout:
+    path:  /logout
+    defaults:  { _controller: BackUserBundle:Security:login }
+
+################
+
+
+back_website_user:
+    resource: "@BackUserBundle/Resources/config/routing.yml"
+    prefix: /login/user
+
+back_website_card:
+    resource: "@BackCardBundle/Resources/config/routing.yml"
+    prefix: /login/fiche
+
+back_website_text:
+    resource: "@BackTextBundle/Resources/config/routing.yml"
+    prefix: /login/texte
+
+back_website_biotherapy:
+    resource: "@BackBiotherapyBundle/Resources/config/routing.yml"
+    prefix: /login/biotherapie
+
+back_website_clinical_situation:
+    resource: "@BackClinicalSituationBundle/Resources/config/routing.yml"
+    prefix: /login/clinical_situation
+
+back_website_partner:
+    resource: "@BackPartnerBundle/Resources/config/routing.yml"
+    prefix: /login/partner
+    
+back_website_media:
+    resource: "@BackMediaBundle/Resources/config/routing.yml"
+    prefix: /login/media

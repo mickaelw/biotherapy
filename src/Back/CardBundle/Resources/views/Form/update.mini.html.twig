@@ -1,0 +1,83 @@
+{% extends "FrontWebsiteBundle:Default:card.html.twig" %}
+
+{% block admincard %}
+	{% for key, message in app.session.flashbag.all() %}
+		<div class="{{ key }}">{% for text in message %} {{text}} {% endfor %}</div>
+	{% endfor %}
+	
+	{{ form_errors(form) }}
+	<form method="post" action="{{ path('front_website_card_admin_update', {'id':obj.id}) }}" {{ form_enctype(form) }}>
+	<table class="table-form">
+		<tr>
+			<th>{{ form_label(form.name, "Nom") }}</th>
+			<td>{{ form_errors(form.name) }}{{ form_widget(form.name) }}</td>
+		</tr>
+		<tr>
+			<th>{{ form_label(form.biotherapy, "Biotherapie") }}</th>
+			<td>{{ form_errors(form.biotherapy) }}{{ form_widget(form.biotherapy) }}</td>
+		</tr>
+		<tr>
+			<th>{{ form_label(form.clinicalSituation, "Situation clinique") }}</th>
+			<td>{{ form_errors(form.clinicalSituation) }}{{ form_widget(form.clinicalSituation) }}</td>
+		</tr>
+		<tr>
+			<th>{{ form_label(form.clinicalSituation2, "Situation clinique 2") }}</th>
+			<td>{{ form_errors(form.clinicalSituation2) }}{{ form_widget(form.clinicalSituation2) }}</td>
+		</tr>
+		<tr>
+			<th colspan="2" style="text-align:center">{{ form_label(form.textMDShort, "Fiche médecin résumé") }}</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(form.textMDShort) }}</td>
+		</tr>
+		<tr>
+			<th colspan="2" style="text-align:center">{{ form_label(form.textPatient, "Fiche patient") }}</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(form.textPatient) }}</td>
+		</tr>
+		<tr>
+			<th colspan="2" style="text-align:center">{{ form_label(form.textMDFull, "Fiche médecin détaillée") }}</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(form.textMDFull) }}</td>
+		</tr>
+		<tr>
+			<th colspan="2" style="text-align:center">{{ form_label(form.textRef, "Références") }}</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(form.textRef) }}</td>
+		</tr>
+		<tr>
+			<th>{{ form_rest(form) }}</th>
+			<td>
+				<input type="submit" class="btn success left" />
+				<a class="btn cancel right" href="{{path('front_website_card_logout')}}">Annuler & se déconnecter</a>
+			</td>
+		</tr>
+	</table>
+	</form>
+{% endblock %}
+
+{% block jsplus %}
+	<script type="text/javascript" src="{{asset('misc/js/tinymce/tinymce.min.js')}}"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#main-type li#green').click();
+			
+			tinymce.init({
+			    selector: "textarea.edit",
+			    plugins: "code fullscreen",
+			    toolbar: "styleselect | undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent  | code fullscreen",
+			    toolbar_items_size: 'small',
+			    style_formats: [
+		        	{title: 'Header', block: 'h3', styles: {color: '#fffff', fontSize:'16px'}},
+		        	{title: 'Normal', block: 'p', styles: {color: '#fffff', fontSize:'12px'}},
+		        	{title: 'Bleu', block: 'p', styles: {color: '#048ef3', fontSize:'12px'}}
+		        ],
+			    menubar: false,
+			    statusbar: false
+			});
+		});
+	</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+back_biotherapy_homepage:
+    pattern:     /
+    defaults: { _controller: BackBiotherapyBundle:Default:index }
+
+back_biotherapy_add:
+    pattern: /ajouter/
+    defaults: { _controller: BackBiotherapyBundle:Default:add }
+
+back_biotherapy_update:
+    pattern: /modifier/{id}
+    defaults: { _controller: BackBiotherapyBundle:Default:update }
+
+back_biotherapy_delete:
+    pattern: /supprimer/{id}
+    defaults: { _controller: BackBiotherapyBundle:Default:delete }

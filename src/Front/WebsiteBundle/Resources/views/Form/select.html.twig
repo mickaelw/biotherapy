@@ -1,0 +1,11 @@
+{% if list is not empty %}
+<div class="{% if ua.platform == 'Macintosh' %}selectMac{% else %}select{% endif %} CS2">
+	<select name="{{name}}" data-ajax="{{path('front_website_ajax', {'param':'select'})}}" >
+		<option value=" " selected="selected">Situations cliniques</option>
+		<option value="0">---</option>
+		{% for cs in list %}
+			<option value="{{cs.id}}">{{cs.name}}</option>
+		{% endfor %}
+	</select>
+</div>
+{% endif %}

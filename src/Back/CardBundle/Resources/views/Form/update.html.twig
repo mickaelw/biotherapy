@@ -1,0 +1,70 @@
+{% extends "BackWebsiteBundle::layout.html.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}
+
+	{% include 'BackWebsiteBundle:Default:menu.html.twig' %}
+	
+	<section id="admin">
+		<h1>Modification d'une fiche</h1>
+		<div id="section-content">
+			{{ form_errors(form) }}
+			<form method="post" action="{{ path('back_card_update', {'id':obj.id}) }}" {{ form_enctype(form) }}>
+			<table class="table-form">
+				<tr>
+					<th>{{ form_label(form.name, "Nom") }}</th>
+					<td>{{ form_errors(form.name) }}{{ form_widget(form.name) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.biotherapy, "Biotherapie") }}</th>
+					<td>{{ form_errors(form.biotherapy) }}{{ form_widget(form.biotherapy) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.clinicalSituation, "Situation clinique") }}</th>
+					<td>{{ form_errors(form.clinicalSituation) }}{{ form_widget(form.clinicalSituation) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.clinicalSituation2, "Situation clinique 2") }}</th>
+					<td>{{ form_errors(form.clinicalSituation2) }}{{ form_widget(form.clinicalSituation2) }}</td>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align:center">{{ form_label(form.textMDShort, "Fiche médecin résumé") }}</th>
+				</tr>
+				<tr>
+					<td colspan="2">{{ form_widget(form.textMDShort) }}</td>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align:center">{{ form_label(form.textPatient, "Fiche patient") }}</th>
+				</tr>
+				<tr>
+					<td colspan="2">{{ form_widget(form.textPatient) }}</td>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align:center">{{ form_label(form.textMDFull, "Fiche médecin détaillée") }}</th>
+				</tr>
+				<tr>
+					<td colspan="2">{{ form_widget(form.textMDFull) }}</td>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align:center">{{ form_label(form.textRef, "Références") }}</th>
+				</tr>
+				<tr>
+					<td colspan="2">{{ form_widget(form.textRef) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_rest(form) }}</th>
+					<td>
+						<input type="submit" class="btn success left" />
+						<a class="btn cancel right" href="{{path('back_card_homepage')}}">Annuler</a>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

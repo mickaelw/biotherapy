@@ -1,0 +1,71 @@
+@font-face {font-family: "Lobster";font-style: normal;font-weight: normal;src: url("../fonts/Lobster.otf");}
+@sprite: transparent url("../img/sprite.png") no-repeat;
+.rotate(@d){
+    -webkit-transform: rotate(@d);
+    -moz-transform: rotate(@d);
+    -o-transform: rotate(@d);
+    writing-mode: lr-tb;
+}
+
+#search-nb-result{float: right; font-size: 15px;font-family: Lobster, Verdana, sans-serif;color: #515151;}
+#search-icon-download{
+	display: none;
+	background: @sprite;
+	background-position: -51px -28px;
+	display: inline-block;
+	margin-right: 5px;
+	float: right;
+	width: 16px;
+	height: 18px;
+	cursor: pointer;
+	margin: 0 10px 5px;
+	&:hover{background-position: -5px -98px;}
+}
+#search-postit-download{
+	position: absolute;
+	z-index: 10;
+	height: 250px;
+	width: 240px;
+	background: transparent url("../img/post-it.png") no-repeat;
+	right: -190px;
+	padding: 70px 25px 0px 10px;
+	cursor: move;
+	p{
+		.rotate(354deg);
+		margin-bottom: 20px;
+		font-size: 14px;
+		text-align: center;
+	}
+	a{
+		.rotate(353.5deg);
+		margin: 5px 0px 5px 45px;
+	}	
+}
+#search-content{
+	position: relative;
+	height: 570px;
+	overflow: auto;
+	article{
+		padding: 15px 10px 0px 10px;
+		h2{float: left;a{color: black;}}
+		.highlight{background-color: #3399ff;}
+		.search-card-infos{
+			font-weight: bold;
+			font-style: italic;
+			margin-bottom: 5px;
+		}
+		.search-card-favorite{
+			background: @sprite;
+			background-position: -27px -28px;
+			display: inline-block;
+			float: right;
+			width: 20px;
+			height: 18px;
+			cursor: pointer;
+			margin-top: 5px;
+			&:hover,&.selected{background-position: -5px -28px;}
+		}
+		.search-card-text{padding-bottom: 15px;border-bottom: 1px solid #d8d8d8; height: 150px;}
+		&:hover{background-color: #b7dceb;}
+	}
+}

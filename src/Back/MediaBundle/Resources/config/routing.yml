@@ -1,0 +1,15 @@
+back_media_homepage:
+    pattern:     /
+    defaults: { _controller: BackMediaBundle:Default:index }
+
+back_media_add:
+    pattern: /ajouter/
+    defaults: { _controller: BackMediaBundle:Default:add }
+
+back_media_update:
+    pattern: /modifier/{id}
+    defaults: { _controller: BackMediaBundle:Default:update }
+
+back_media_delete:
+    pattern: /supprimer/{id}
+    defaults: { _controller: BackMediaBundle:Default:delete }

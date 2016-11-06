@@ -1,0 +1,15 @@
+back_CS_homepage:
+    pattern:     /
+    defaults: { _controller: BackClinicalSituationBundle:Default:index }
+
+back_CS_add:
+    pattern: /ajouter/
+    defaults: { _controller: BackClinicalSituationBundle:Default:add }
+
+back_CS_update:
+    pattern: /modifier/{id}
+    defaults: { _controller: BackClinicalSituationBundle:Default:update }
+
+back_CS_delete:
+    pattern: /supprimer/{id}
+    defaults: { _controller: BackClinicalSituationBundle:Default:delete }

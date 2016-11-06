@@ -1,0 +1,223 @@
+@color: #048ef3;
+
+/* Mixins */
+.border-radius (@tl: 0, @tr: 0, @br: 0, @bl: 0) {
+	-webkit-border-radius: @arguments;
+	-moz-border-radius: @arguments;
+	-o-border-radius: @arguments;
+	border-radius: @arguments;  
+}
+.box-shadow (@x) when (@x = none) {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;  
+}
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+	-webkit-box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-o-box-shadow: @arguments;
+	box-shadow: @arguments;  
+}
+.transition(@p, @t, @e){
+	-webkit-transition: @p @t @e;
+	-moz-transition: @p @t @e;
+	-o-transition: @p @t @e;
+	transition: @p @t @e;
+}
+
+#body{
+	width:1024px;
+	margin:auto;
+	font-size:12px;
+
+	/* =======================
+	* CSS - Header
+	* ===================== */
+	header{
+		height:58px;
+		background:url(../../img/admin/menu-repeat-x.png) repeat-x;
+		
+		margin: 15px 0;
+		padding: 2px 20px 0px 20px;
+		.border-radius (15px,15px,15px,15px);
+		.box-shadow (0px,4px,4px,#333);
+		color:white;
+		
+		line-height:55px;
+		img{float:left;margin-right:15px;}
+		nav{
+			float: right;
+			padding-top: 7px;
+			ul{
+				li{
+					float: left;
+					width: 140px;
+					background-image: url(../../img/admin/menu-sep.jpg);
+					background-position: left top;
+					background-repeat: no-repeat;
+					a{
+						display: block;
+						height: 40px;
+						background-repeat: no-repeat;
+						background-position: top center;						
+						text-align: center;
+						color: white;
+						&#nav-home-selected, &#nav-home{background-image: url(../../img/admin/menu/home-out.png);}
+						&#nav-home-selected, &#nav-home:hover{
+							background-image: url(../../img/admin/menu/home-in.png);
+							color:@color;
+							text-decoration: none;
+						}
+						&#nav-contenu-selected, &#nav-contenu{background-image: url(../../img/admin/menu/contenu-out.png);}
+						&#nav-contenu-selected, &#nav-contenu:hover{
+							background-image: url(../../img/admin/menu/contenu-in.png);
+							color:@color;
+							text-decoration: none;
+						}
+						&#nav-rapport-selected, &#nav-rapport{background-image: url(../../img/admin/menu/rapport-out.png);}
+						&#nav-rapport-selected, &#nav-rapport:hover{
+							background-image: url(../../img/admin/menu/rapport-in.png);
+							color:@color;
+							text-decoration: none;
+						}
+						&#nav-user-selected, &#nav-user{background-image: url(../../img/admin/menu/user-out.png);}
+						#nav-user-selected, &#nav-user:hover{
+							background-image: url(../../img/admin/menu/user-in.png);
+							color:@color;
+							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	p#login{float: right;margin-bottom:15px;margin-right: 20px;}
+	
+	#main{
+		/* =======================
+		* CSS - Content - logout
+		* ===================== */
+		section{
+			width:100%;
+			background-color:white;
+			.border-radius (15px,15px,15px,15px);
+			border:1px solid #b9b9b9;
+			&#login,&#user{
+				#section-content{
+					padding:15px;
+					p{float: left;width: 450px;}
+					form{
+						float: right;
+						margin-right: 150px;
+						padding: 10px;						
+						border: 1px solid #b9b9b9;
+						.border-radius (10px,10px,10px,10px);
+						table{ 
+							tr{height: 30px;}
+							th{text-align: left;width: 150px;}
+						}
+					}
+				}
+				h1{
+					height:52px;
+					background:url(../../img/admin/section-repeat-x.jpg) repeat-x;
+					.border-radius (15px,15px,0px,0px);
+					.box-shadow (0px,1px,4px,#747474);
+					color:black;
+					font-size:20px;
+					padding-left:15px;
+					padding-right:15px;
+					line-height:52px;
+				}
+			}
+			&#admin{
+				float:right;
+				width:710px;
+				background-color:white;
+				border-radius:15px;
+				border:1px solid #b9b9b9;
+				h1{
+					height:52px;
+					background:url(../../img/admin/section-repeat-x.jpg) repeat-x;
+					.border-radius (15px,15px,0px,0px);
+					.box-shadow (0px,1px,4px,#747474);
+					color:black;
+					font-size:20px;
+					padding-left:15px;
+					padding-right:15px;
+					line-height:52px;
+				}
+				#load-ajax h2,h2{font-size: 18px;margin-bottom: 10px;}
+				#section-content{
+					padding:15px;
+					div.sep{
+						height: 23px;
+						width: 710px;
+						border-top:1px solid #cacaca;
+						margin: 15px 0px 0px -15px;
+						
+						background: url(../../img/admin/repeat-x-sep.jpg) repeat-x;
+					}
+					div.actions{
+						margin-bottom: 15px;
+						span{cursor: pointer; font-style: italic; &:hover{text-decoration: underline;}}
+					}
+				}
+			}
+		}
+		aside{
+			float:left;
+			width:300px;
+			background-color:#394552;
+			.border-radius (15px,15px,15px,15px);
+			border:1px solid #172533;
+			h2{
+				width:298px;
+				height:52px;
+				background:url(../../img/admin/aside-repeat-x.jpg) repeat-x;
+				.box-shadow (0px,1px,4px,#333);
+				color:black;
+				font-size:18px;
+				padding-left:15px;
+				padding-right:15px;
+				line-height:52px;
+				color:white;
+				&:first-of-type{.border-radius (15px,15px,0px,0px);}
+			}
+			.aside-content{
+				padding:10px 0px 30px 0px;
+				nav ul li{
+					padding:5px 15px 0px 15px;
+					font-size:14px;
+					&:hover{background-color:#6b747d;a{color:#048ef3;}}
+					a{
+						display:block;
+						border-bottom:
+						1px solid #b9b9b9;
+						color:white;
+						padding-bottom:5px;
+						text-decoration:none;
+					}
+				}
+			}
+		}
+	}
+	
+	/* =======================
+	* CSS - Footer
+	* ===================== */
+	footer{
+		width:100%;
+		border-top:1px solid #646464;
+		margin-top:40px;
+		margin-bottom:10px;
+		p{font-size:12px;color:#646464;}
+		a{
+			color:#646464;
+			text-decoration:none;
+			&:hover{text-decoration:underline;}
+		}
+	}
+}

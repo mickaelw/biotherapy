@@ -1,0 +1,11 @@
+fos_user_security_back:
+    resource: "@BackWebsiteBundle/Resources/config/routing.yml"
+    prefix: /admin/
+
+
+###################
+
+front_website:
+    resource: "@FrontWebsiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
